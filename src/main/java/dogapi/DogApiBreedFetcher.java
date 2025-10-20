@@ -19,8 +19,6 @@ public class DogApiBreedFetcher implements BreedFetcher {
 
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String APPLICATION_JSON = "application/json";
-    private static final String STATUS_CODE = "status_code";
-    private static final int SUCCESS_CODE = 200;
     /**
      * Fetch the list of sub breeds for the given breed from the dog.ceo API.
      * @param breed the breed to fetch sub breeds for
@@ -49,11 +47,11 @@ public class DogApiBreedFetcher implements BreedFetcher {
                 return subBreeds;
             }
             else {
-                throw new BreedNotFoundException("Failed to fetch breed info for: " + breed);
+                throw new BreedNotFoundException(breed);
             }
         }
         catch (IOException | RuntimeException event) {
-            throw new BreedNotFoundException("Failed to fetch breed info for: " + breed);
+            throw new BreedNotFoundException(breed);
         }
 
     }
